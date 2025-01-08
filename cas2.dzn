@@ -1,0 +1,40 @@
+% Example `cas2.dzn` corrected structure
+n_employee = 6;
+n_turbine = 8;
+n_tasks = 19;
+
+n_week = 1; % Ensure it matches the `.mzn` model requirements
+n_day = n_week * 5;
+n_period = n_day * 3;
+
+% Productivity matrix for turbines
+productivite = array2d(1..n_turbine, 1..n_period, [
+    5,7,7, 2,3,2, 3,2,2, 4,8,5, 4,7,6,
+    6,5,6, 3,3,2, 2,4,3, 5,7,3, 5,6,5,
+    5,5,6, 2,4,3, 3,3,3, 4,8,2, 4,7,6,
+    5,6,5, 3,3,2, 2,2,2, 6,6,4, 6,8,7,
+    7,7,8, 2,2,2, 3,3,2, 4,8,2, 4,7,6,
+    6,5,6, 4,3,4, 4,2,3, 4,6,3, 5,6,8,
+    5,5,7, 2,2,4, 4,3,2, 5,7,2, 6,6,5,
+    6,7,7, 2,3,3, 3,2,2, 6,8,4, 4,7,6
+]);
+
+% Turbine-to-task assignment
+on_turbine = array1d(1..n_tasks, [1,1,1,2,2,2,3,3,3,4,4,5,5,6,6,7,7,8,8]);
+
+% Task length per period
+length = array1d(1..n_tasks, [3,1,4,3,1,4,3,1,2,3,2,3,2,3,2,3,2,3,2]);
+
+% Skills-related data
+n_skills = 3; % Number of skills
+skills = array2d(1..n_employee, 1..n_skills, [
+    1,1,1,
+    1,0,1,
+    1,1,0,
+    0,1,1,
+    0,1,1,
+    1,0,0
+]);
+
+% Skills required for tasks
+skill_req = array1d(1..n_tasks, [1,1,1,2,1,2,3,1,2,3,2,3,2,3,1,1,2,3,2]);

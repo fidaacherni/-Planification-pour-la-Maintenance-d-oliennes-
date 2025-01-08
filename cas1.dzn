@@ -1,0 +1,17 @@
+%Ce premier cas est un test très simple sur 2 jours et 2 éoliennes
+%Vous pouvez le résoudre à la main pour être sur de votre résultat et modifier les données à des fins de test
+
+n_employee = 1;
+n_turbine = 2;
+n_tasks = 3;
+
+n_week = 1;
+n_day = 2;
+n_period = n_day*3; %3 périodes par jour
+
+%productivité d'une éolienne à chaque période
+productivite = array2d(1..n_turbine,1..n_period,[10,8,10,8,9,9,
+                                                 10,5,6,7,9,9]);
+%durée et emplacement de chaque tâche
+on_turbine = array1d(1..n_tasks,[1,1,2]);                                                
+length = array1d(1..n_tasks,[1,1,2]);
